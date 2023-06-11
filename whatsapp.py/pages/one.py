@@ -122,10 +122,7 @@ def process(file):
 
         status_text.text("Operation completed!")
 
-    st.markdown(
-    "<p style='font-size: 18px; font-weight: bold; background-color: GREEN padding: 10px;, color: black;'>This is the most commonly used words between you and your Friends</p>",
-    unsafe_allow_html=True
-)
+
     
     # Calculate the count of each unique year in the 'Year' column
     year_counts = df['year'].value_counts()
