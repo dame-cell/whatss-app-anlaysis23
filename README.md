@@ -6,9 +6,9 @@ Check out my WhatsApp analysis website: [Link to WhatsApp Analysis](https://what
 
 # Project Description
 
-## The WhatsApp Stats Analyzer is a data analysis project that allows users to gain insights and visualize statistics from their WhatsApp chat history. 
+The WhatsApp Stats Analyzer is a data analysis project that allows users to gain insights and visualize statistics from their WhatsApp chat history. 
 
-## By leveraging the power of Python, pandas, and Streamlit, this project  provides an interactive and user-friendly interface to explore and understand various aspects of WhatsApp conversations.
+By leveraging the power of Python, pandas, and Streamlit, this project  provides an interactive and user-friendly interface to explore and understand various aspects of WhatsApp conversations.
 
 # Key Features
 * Data Loading: Easily import your WhatsApp chat history in text or CSV format. The application supports parsing and handling different data structures and formats commonly used in WhatsApp exports.
