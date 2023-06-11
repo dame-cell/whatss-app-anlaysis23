@@ -21,14 +21,10 @@ Check out my WhatsApp analysis website: [Link to WhatsApp Analysis](https://what
 
 ## How to Use
  
-* Upload your WhatsApp chat history file (text or CSV format) through the user interface.
-* 
+* Upload your WhatsApp chat history file (text or CSV format) through the user interface. 
 * Explore the various statistical insights and visualizations generated based on your data.
-* 
 * Customize the analysis by selecting specific time ranges, users, or chat groups of interest.
-* 
 * Dive into individual user profiles to gain deeper insights into their messaging behavior and sentiment.
-* 
 * Save and export the generated visualizations or download the analyzed data for further analysis or sharing.
 
 # How do you get the data 
