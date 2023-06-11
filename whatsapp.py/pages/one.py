@@ -10,7 +10,7 @@ import time
 
 
 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 import seaborn as sns
 
