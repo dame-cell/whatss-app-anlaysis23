@@ -3,18 +3,12 @@
 import streamlit  as st 
 import pandas as pd 
 from pandas import *
-
-
-
 import time 
 
 
-
 import matplotlib.pyplot as plt
-
+import random 
 import seaborn as sns
-
-
 import plotly.express as px
 import plotly.graph_objects as go
 
