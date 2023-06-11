@@ -2,7 +2,6 @@
 
 https://github.com/dame-cell/whatss-app-anlaysis23/assets/122996026/a43fe9ce-bd17-49d4-8ec8-c79a2cf9fc8c
 
-https://github.com/dame-cell/what-s-app/assets/122996026/8e38291d-6ec2-4e05-843c-31f2536ba8b3
 
 # Project Description
 
