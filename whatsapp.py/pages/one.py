@@ -133,7 +133,6 @@ def process(file):
     unsafe_allow_html=True
 )
     
-    
     # Calculate the count of each unique year in the 'Year' column
     year_counts = df['year'].value_counts()
 
@@ -166,7 +165,28 @@ def process(file):
     # Display the pie chart in Streamlit
     st.pyplot(fig2)
 
+    num_users = 5
+    unique_users = df['User'].unique()
+    sampled_users = random.sample(list(unique_users), num_users)
+
+    value_counts = df['User'].value_counts()
+    sampled_value_counts = value_counts[value_counts.index.isin(sampled_users)]
+
+    top_users = sampled_value_counts.nlargest(2).index.tolist()
+    filtered_sampled_users = [user for user in sampled_users if user in top_users]
+    filtered_sampled_value_counts = sampled_value_counts[sampled_value_counts.index.isin(filtered_sampled_users)]
+
+    data = {'names': filtered_sampled_users, 'values': filtered_sampled_value_counts.tolist()}
+
+    fig2 = go.Figure(data=[go.Bar(x=data['names'], y=data['values'], marker_color='blue')])
+    fig2.update_layout(title_text='User Value Counts', xaxis_title="User", yaxis_title="Value Count")
+    fig2.show() 
     
+   
+    # progress bar 
+    progress_text = "Operation in progress. Please wait."
+    progress_bar = st.progress(0)
+    status_text = st.empty()
 
     for percent_complete in range(100):
         time.sleep(0.1)
@@ -175,12 +195,6 @@ def process(file):
 
         status_text.text("Operation completed!")
 
-    st.markdown(
-    "<p style='font-size: 18px; font-weight: bold; background-color: GREEN padding: 10px;, color: black;'>the user that that talks a lot </p>",
-    unsafe_allow_html=True
-)
-   # deploying heatmap 
-    # Get the two most common values from the 'User' column
     values = df['User'].value_counts().nlargest(2).index.tolist()
 
     # Create a pivot table based on the most common values
@@ -188,7 +202,7 @@ def process(file):
     sentiment_heatmap = sentiment_heatmap.loc[values]  # Filter the pivot table based on the most common values
 
     # Plot the sentiment heatmap
-    fig3, ax = plt.subplots(figsize=(5, 8))
+    fig3, ax = plt.subplots(figsize=(10, 8))
     sns.heatmap(sentiment_heatmap, cmap='coolwarm', annot=True, fmt='d', ax=ax)
     plt.title('Sentiment Heatmap')
     plt.xlabel('Sentiment')
@@ -196,13 +210,7 @@ def process(file):
     plt.tight_layout()
     st.pyplot(fig3)
 
-        
-    st.markdown(
-    "<p style='font-size: 18px; font-weight: bold; background-color: GREEN padding: 10px;, color: black;'>look to the sideabar you will see a button click on it and it will reveal random histogram about the USER</p>",
-        unsafe_allow_html=True
-)    
-    
-    
+
     # Get the two most common values from the 'User' column
     values = df['User'].value_counts().nlargest(2).index.tolist()
 
@@ -210,23 +218,21 @@ def process(file):
     filtered_df = df[df['User'].isin(values)]
 
     # Plot the histogram using Plotly Express in Streamlit
-    fig4= px.histogram(filtered_df, x='User')
-
-    st.plotly_chart(fig4)
+    fig4 = px.histogram(filtered_df, x='User')
+    st.plotly_chart(fig4, use_container_width=True)
 
     # Create the histogram plot using Plotly Express
-    fig5 = px.histogram(df, x='month', template='plotly_white', title='Active  by month')
-    fig5.update_xaxes(categoryorder='category descending', title='Date').update_yaxes(title='How Active by month')
+    fig5 = px.histogram(df, x='month', template='plotly_white', title='Complaint counts by date')
+    fig5.update_xaxes(categoryorder='category descending', title='Date').update_yaxes(title='How Active')
 
     # Display the histogram plot in Streamlit
     st.plotly_chart(fig5, use_container_width=True)
 
 
    # plots by days 
-    plt.figure(figsize=(14,10))
-    fig6 = px.histogram(df, x='days', template='plotly_white', title="how active by days"
+    fig6 = px.histogram(df, x='days', template='plotly_white', title="how active by hour"
                     , color='hour', nbins=6, log_y=True, barmode='group')
-    fig6.update_xaxes(categoryorder='category descending', title='Date').update_yaxes(title='how active by days')
+    fig6.update_xaxes(categoryorder='category descending', title='Date').update_yaxes(title='how active by hour')
     st.plotly_chart(fig6, use_container_width=True)
     
    # plots by mins 
@@ -234,13 +240,10 @@ def process(file):
                    , color='minute', nbins=6, log_y=True, barmode='group')
     fig7.update_xaxes(categoryorder='category descending', title='Date').update_yaxes(title='how active by mins ')
     
-    st.plotly_chart(fig7, use_container_width=True)
-
+    st.plotly_chart(fig7, use_container_width=True)   
     # plots by days 
-    fig8= px.histogram(df, x='days', template='plotly_white', title= "how active by days"
+    fig8 = px.histogram(df, x='days', template='plotly_white', title= "how active by days"
                    , color='days', nbins=6, log_y=True, barmode='group')
     fig8.update_xaxes(categoryorder='category descending', title='Date').update_yaxes(title='how active by days')
-    
     st.plotly_chart(fig8, use_container_width=True)
-
     
