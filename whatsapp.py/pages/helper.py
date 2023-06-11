@@ -127,7 +127,7 @@ def preprocess_chat_data(file):
     explode = [0.1] + [0] * (len(years) - 1)  # Explode the first slice
 
     # Create the pie chart with labels and values
-    fig2, ax = plt.subplots(figsize=(10, 7))
+    fig2, ax = plt.figure(figsize=(10, 7))
     ax.pie(counts, labels=years, colors=colors, explode=explode, shadow=True, startangle=90)
 
     # Add a title
@@ -182,7 +182,7 @@ def preprocess_chat_data(file):
     sentiment_heatmap = sentiment_heatmap.loc[values]  # Filter the pivot table based on the most common values
 
     # Plot the sentiment heatmap
-    fig3, ax = plt.subplots(figsize=(10, 8))
+    fig3, ax = plt.figure(figsize=(10, 8))
     sns.heatmap(sentiment_heatmap, cmap='coolwarm', annot=True, fmt='d', ax=ax)
     plt.title('Sentiment Heatmap')
     plt.xlabel('Sentiment')
