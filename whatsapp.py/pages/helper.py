@@ -145,7 +145,7 @@ def preprocess_chat_data(file):
     # Display the pie chart in Streamlit
     st.pyplot(fig2)
 
-    num_users = 5
+    num_users = 3
     unique_users = df['User'].unique()
     sampled_users = random.sample(list(unique_users), num_users)
 
